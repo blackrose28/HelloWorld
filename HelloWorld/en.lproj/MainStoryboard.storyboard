@@ -13,8 +13,12 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pxo-aE-VsQ">
+                                <accessibility key="accessibilityConfiguration" hint="Type your Name"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="2" id="aSD-Z9-8ft"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJ5-T5-Su1">
                                 <constraints>
@@ -33,10 +37,14 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="changeGreeting:" destination="2" eventType="touchUpInside" id="JWN-Cj-LdR"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Yif-Yz-kJV" secondAttribute="bottom" constant="78" id="E7Q-ei-fqD"/>
                             <constraint firstItem="nJ5-T5-Su1" firstAttribute="top" secondItem="3" secondAttribute="top" constant="187" id="Gep-J3-bP6"/>
                             <constraint firstAttribute="trailing" secondItem="pxo-aE-VsQ" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="KNC-Ya-Eyr"/>
                             <constraint firstAttribute="trailing" secondItem="nJ5-T5-Su1" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="aYf-lt-Xqj"/>
@@ -44,14 +52,30 @@
                             <constraint firstItem="pxo-aE-VsQ" firstAttribute="top" secondItem="3" secondAttribute="top" constant="20" symbolic="YES" type="default" id="bx8-Oz-h0B"/>
                             <constraint firstItem="nJ5-T5-Su1" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="i9X-Yi-lJU"/>
                             <constraint firstItem="Yif-Yz-kJV" firstAttribute="centerX" secondItem="nJ5-T5-Su1" secondAttribute="centerX" type="default" id="sJS-o4-lFS"/>
-                            <constraint firstAttribute="bottom" secondItem="Yif-Yz-kJV" secondAttribute="bottom" constant="80" id="vO9-w8-JZl"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="label" destination="nJ5-T5-Su1" id="yLK-Th-0Af"/>
+                        <outlet property="textField" destination="pxo-aE-VsQ" id="bmr-Yo-Tud"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
+    <classes>
+        <class className="HelloWorldViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HelloWorldViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="changeGreeting:"/>
+                <relationship kind="outlet" name="label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="textField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
